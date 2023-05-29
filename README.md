@@ -1,4 +1,4 @@
-# Youtube-Algorithm-Optimization# Youtube-Algorithm-Optimization
+# Youtube-Algorithm-Optimization
 
 
 ## Goal
