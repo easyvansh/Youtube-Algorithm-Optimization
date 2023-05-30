@@ -6,7 +6,7 @@
 # Load dependencies
 import pandas as pd
 from datetime import datetime, timedelta
-from apiclient.discovery import build
+from googleapiclient.discovery import build
 import json
 
 def get_start_date_string(search_period_days):
@@ -107,6 +107,7 @@ def print_top_videos(df, num_to_print):
     """Prints top videos to console, with details and link to video."""
     # Create a list to store the information
     video_data = {}
+    jsonFile = open ("data.json","w+")
     if len(df) < num_to_print:
         num_to_print = len(df)
     if num_to_print == 0:
@@ -122,11 +123,12 @@ def print_top_videos(df, num_to_print):
 with {} subscribers and can be viewed here: {}\n"\
                                         .format(i+1, title, views, subs, link))
             print("==========================\n")
-            video_data[i] = title
-    # Convert list to json 
-    jsonString = json.dumps(video_data,indent = num_to_print)
-    jsonFile = open ("data.json","w")
-    jsonFile.write(jsonString)
+            video_data[i+1]={"title":title,"link":link}
+        # Convert list to json 
+        jsonString = json.dumps(dict(video_data),indent = num_to_print)
+        jsonFile.write(jsonString)
+
+
     jsonFile.close()
 
 ## ======================================================================= ##

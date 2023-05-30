@@ -23,7 +23,6 @@ def load_yaml(filepath):
         except yaml.YAMLError as exc:
             print(exc)
 
-API_KEY =  "AIzaSyCBbhqJ4KRzzZrGInD5eRM53yCnXFRcoNc"
 config = load_yaml('config.yaml')
 
 if __name__ == "__main__":
